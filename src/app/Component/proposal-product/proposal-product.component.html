@@ -1,0 +1,44 @@
+<h1>محصولات سفارشی</h1>
+
+<div class="container-proposal">
+  <div class="Product-Card" *ngFor="let pproduct of datas">
+    <div class="Icon-Card-Product">
+      <!-- <ProductIconCard {...props} /> -->
+    </div>
+    <div class="Product-Wrapper-Card">
+      <div class="Product-Discount">
+        <span>{{ pproduct[1].discount }}</span>
+      </div>
+      <img
+        [src]="['../../assets/images/', pproduct[1].productImgName]"
+        [alt]="[pproduct[1].productImgName]"
+      />
+      <div class="Card-Product-Body">
+        <div class="Card-Product-Title">
+          <span> {{ pproduct[1].title }}</span>
+        </div>
+        <div class="Price-Product-Card">
+          <span class="Price-Discount-Card">{{ pproduct[1].price }}</span>
+          <div>
+            <span class="Price-Card">
+              {{
+                pproduct[1].price -
+                  (pproduct[1].price * pproduct[1].discount) / 100
+              }}
+              تومان
+            </span>
+          </div>
+        </div>
+        <div
+          class="MoreInfo-Product-Card"
+          [routerLink]="['/proposal-product', pproduct[1].id]"
+        >
+          <span> مشاهده بیشتر</span>
+        </div>
+        <div class="Insert-Cart" (click)="('AddtoCart(props)')">
+          <span>افزودن به سبد خرید</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

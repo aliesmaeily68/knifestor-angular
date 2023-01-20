@@ -1,0 +1,56 @@
+.Admin-Container {
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.edit {
+  display: flex;
+  gap: 1rem;
+}
+
+.show {
+  display: block;
+}
+
+.new-Product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-f {
+  display: flex;
+  justify-content: space-between;
+}
+img {
+  width: 35%;
+  height: 35%;
+}
+
+tbody tr :nth-child(2) {
+  width: 20%;
+  font-size: 0.7rem;
+}
+.creat-product-form,
+.update-product-form {
+  width: 80%;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+}
+
+.creat-new-Product-btn,
+.update-new-Product-btn {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  column-gap: 1rem;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin: 1em;
+  font-size: 2rem;
+  color: var(--Primary-Color);
+}

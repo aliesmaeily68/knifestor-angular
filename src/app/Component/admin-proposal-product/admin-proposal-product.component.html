@@ -1,0 +1,348 @@
+<!-- all product table -->
+<div
+  [class]="
+    showCratProductForm || openCreatProductForm
+      ? 'Admin-Container d-none'
+      : 'Admin-Container'
+  "
+>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">شماره</th>
+        <th scope="col">تصویر محصول</th>
+        <th scope="col">عنوان</th>
+        <th scope="col">مبلغ</th>
+        <th scope="col">ویرایش</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of datas; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <img
+            [src]="['../../assets/images/', product[1].productImgName]"
+            [alt]="[product[1].productImgName]"
+          />
+        </td>
+        <td>{{ product[1].title }}</td>
+        <td>{{ product[1].price }}</td>
+        <td class="edit">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onDeleteHandler(product[0])"
+          >
+            حذف
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onshowFormUpdateHandler(product[0])"
+          >
+            ویرایش
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- creat Product Form -->
+<div
+  [class]="!showCratProductForm ? 'form-container d-none' : 'form-container'"
+>
+  <h1>فرم ایجاد محصول جدید</h1>
+  <div class="creat-product-form">
+    <div class="mb-3">
+      <label for="title" class="form-label">عنوان محصول</label>
+      <input
+        [(ngModel)]="creatnewProductData.title"
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="عنوان محصول"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">مبلغ </label>
+      <input
+        [(ngModel)]="creatnewProductData.price"
+        type="text"
+        class="form-control"
+        id="price"
+        name="price"
+        placeholder="مبلغ محصول "
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">تصویر</label>
+      <input
+        [(ngModel)]="creatnewProductData.productImgName"
+        type="text"
+        class="form-control"
+        id="image"
+        placeholder="تصویر محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="stock" class="form-label">تعداد</label>
+      <input
+        [(ngModel)]="creatnewProductData.stock"
+        type="text"
+        class="form-control"
+        id="stock"
+        placeholder="موجودی انبار از محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="discount" class="form-label">تخفیف</label>
+      <input
+        [(ngModel)]="creatnewProductData.discount"
+        type="text"
+        class="form-control"
+        id="discount"
+        placeholder="درصد تخفیف محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="weight" class="form-label">وزن</label>
+      <input
+        [(ngModel)]="creatnewProductData.weight"
+        type="text"
+        class="form-control"
+        id="weight"
+        placeholder="وزن محصول به گرم"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="genus" class="form-label">جنس</label>
+      <input
+        [(ngModel)]="creatnewProductData.genus"
+        type="text"
+        class="form-control"
+        id="genus"
+        placeholder="جنس محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="usage" class="form-label">کاربرد</label>
+      <input
+        [(ngModel)]="creatnewProductData.usage"
+        type="text"
+        class="form-control"
+        id="usage"
+        placeholder="کاربرد محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="producer" class="form-label">تولید کننده</label>
+      <input
+        [(ngModel)]="creatnewProductData.producer"
+        type="text"
+        class="form-control"
+        id="producer"
+        placeholder="تولید کننده محصول"
+        required
+      />
+    </div>
+    <div class="creat-new-Product-btn">
+      <button
+        type="button"
+        class="btn btn-warning new-Product"
+        (click)="onCreatproductHandler()"
+      >
+        ارسال
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger new-Product"
+        (click)="onCanselCreatproductHandler()"
+      >
+        انصراف
+      </button>
+    </div>
+  </div>
+</div>
+<!-- update Product Form -->
+<div
+  [class]="!showUpdateProductForm ? 'form-container d-none' : 'form-container'"
+>
+  <h1>فرم ویرایش محصول جدید</h1>
+  <div class="update-product-form">
+    <div class="mb-3">
+      <label for="title" class="form-label">عنوان محصول</label>
+      <input
+        [(ngModel)]="updateProductData.title"
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="عنوان محصول"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">مبلغ </label>
+      <input
+        [(ngModel)]="updateProductData.price"
+        type="text"
+        class="form-control"
+        id="price"
+        name="price"
+        placeholder="مبلغ محصول "
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">تصویر</label>
+      <input
+        [(ngModel)]="updateProductData.productImgName"
+        type="text"
+        class="form-control"
+        id="image"
+        placeholder="تصویر محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="stock" class="form-label">تعداد</label>
+      <input
+        [(ngModel)]="updateProductData.stock"
+        type="text"
+        class="form-control"
+        id="stock"
+        placeholder="موجودی انبار از محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="discount" class="form-label">تخفیف</label>
+      <input
+        [(ngModel)]="updateProductData.discount"
+        type="text"
+        class="form-control"
+        id="discount"
+        placeholder="درصد تخفیف محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="weight" class="form-label">وزن</label>
+      <input
+        [(ngModel)]="updateProductData.weight"
+        type="text"
+        class="form-control"
+        id="weight"
+        placeholder="وزن محصول به گرم"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="genus" class="form-label">جنس</label>
+      <input
+        [(ngModel)]="updateProductData.genus"
+        type="text"
+        class="form-control"
+        id="genus"
+        placeholder="جنس محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="usage" class="form-label">کاربرد</label>
+      <input
+        [(ngModel)]="updateProductData.usage"
+        type="text"
+        class="form-control"
+        id="usage"
+        placeholder="کاربرد محصول"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="producer" class="form-label">تولید کننده</label>
+      <input
+        [(ngModel)]="updateProductData.producer"
+        type="text"
+        class="form-control"
+        id="producer"
+        placeholder="تولید کننده محصول"
+        required
+      />
+    </div>
+    <div class="update-new-Product-btn">
+      <button
+        type="button"
+        class="btn btn-warning new-Product"
+        (click)="onUpdateproductHandler()"
+      >
+        ویرایش اطلاعات محصول
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger new-Product"
+        (click)="oncanselUpdateproductHandler()"
+      >
+        انصراف
+      </button>
+    </div>
+  </div>
+</div>
+<!-- creat product BTN -->
+<div
+  [class]="
+    showCratProductForm || openCreatProductForm
+      ? 'new-Product d-none'
+      : 'new-Product'
+  "
+>
+  <button
+    type="button"
+    class="btn btn-warning new-Product"
+    (click)="onOpenFormCreatproductHandler()"
+  >
+    ایجاد محصول جدید
+  </button>
+</div>
+<!-- Modal -->
+<div [class]="showModal ? 'modal show' : 'modal'" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-f">
+        <h5 class="modal-title">حذف محصول</h5>
+        <button
+          type="button"
+          class="btn-close m-0"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="onCloseModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>از حذف محصول اطمینان دارید؟</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="onCloseModal()"
+        >
+          انصراف
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onDeletedProdutHandler()"
+        >
+          بله حذف شود
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

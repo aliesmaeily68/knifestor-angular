@@ -1,0 +1,99 @@
+
+<div class="MainProduct-Container">
+  <div class="MainProduct-wrapper">
+    <div class="MainProduct-img">
+      <img
+        [src]="['../../assets/images/', mainProduct.productImgName]"
+        [alt]="[mainProduct.productImgName]"
+      />
+    </div>
+    <div class="MainProduct-ProductInfo">
+      <div class="MainProduct-Title">{{ mainProduct.title }}</div>
+      <div class="MainProduct-price">
+        <span class="MainProduct-MainPrice">
+          {{ mainProduct.price }}
+        </span>
+        <div>
+          <span class="MainProduct-Price-WithDiscount">
+            {{
+              mainProduct.price -
+                (mainProduct.price * mainProduct.discount) / 100
+            }}
+            تومان
+          </span>
+        </div>
+      </div>
+      <ul class="MainProduct-ListGroup-ProductInfo">
+        <li class="MainProduct-list-ProductInfo">
+          <!-- <RiArrowLeftSLine /> -->
+          <span>تولید کننده : {{ mainProduct.producer }} </span>
+        </li>
+        <li class="MainProduct-list-ProductInfo">
+          <!-- <RiArrowLeftSLine /> -->
+          <span>وزن : {{ mainProduct.Weight }} گرم</span>
+        </li>
+        <li class="MainProduct-list-ProductInfo">
+          <!-- <RiArrowLeftSLine /> -->
+          <span>جنس : {{ mainProduct.genus }} </span>
+        </li>
+        <li class="MainProduct-list-ProductInfo">
+          <!-- <RiArrowLeftSLine /> -->
+          <span>کاربردها : {{ mainProduct.usage }} </span>
+        </li>
+      </ul>
+
+      <div class="MainProduct-InsertToBagCart">
+        <div class="MainProduct-increasOrdecreas-Product">
+          <button class="MainProduct-increas">+</button>
+          <span>1</span>
+          <button class="MainProduct-decreas">-</button>
+        </div>
+        <button class="MainProduct-btn-BagCart">افزودن به سبد خرید</button>
+      </div>
+      <div class="MainProduct-Icons">
+        <div class="MainProduct-Icon-Comparison">
+          <!-- <TbArrowsShuffle
+              class="MainProduct-MainIcon"
+            /> -->
+          <span>مقایسه</span>
+        </div>
+        <div class="MainProduct-Icon-Favorites">
+          <!-- <AiOutlineHeart
+              class="MainProduct-MainIcon"
+              onClick={() => AddToFavorites(MainProduct)}
+            /> -->
+          <span>افزودن به علاقه مندی</span>
+        </div>
+      </div>
+      <hr />
+      <div class="MainProduct-Category-Title">
+        دسته : <span>MainProduct.Category </span>
+      </div>
+      <div>
+        <span class="MainProduct-Stock-Empty">ناموجود</span>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+  <div class="MainProduct-Discription-Comments">
+    <ul class="ListGroup-MainProduct-Discription-Comments">
+      <!-- <NavLink
+          to={"descriptionproduct"}
+          class={(link) =>
+            link.isActive ? "MainProduct-Menu-Activ" : ""
+          }
+        >
+          <li class="List-MainProduct-Discription">توضیحات</li>
+        </NavLink>
+        <NavLink
+          to={"commentsproduct"}
+          class={(link) =>
+            link.isActive ? "MainProduct-Menu-Activ" : ""
+          }
+        >
+          <li class="List-MainProduct-Comments">نظرات</li>
+        </NavLink> -->
+    </ul>
+  </div>
+</div>
